@@ -12,7 +12,7 @@ import sys
 if __name__ == "__main__":
 
     if len(sys.argv) != 3:
-        print("Usage: {} sphinx-srcdir sphinx-builddir".format(sys.argv[0]), file=sys.stderr)
+        print(f"Usage: {sys.argv[0]} sphinx-srcdir sphinx-builddir", file=sys.stderr)
         sys.exit(2)
 
     conf_dir = os.path.abspath(sys.argv[1])
@@ -23,9 +23,9 @@ if __name__ == "__main__":
 
     if hasattr(conf, 'man_pages'):
         for man in conf.man_pages:
-            man_path = os.path.join(sys.argv[2], "%s.%s" % (man[1], man[4]))
+            man_path = os.path.join(sys.argv[2], f"{man[1]}.{man[4]}")
             man_path_posix = pathlib.PureWindowsPath(man_path).as_posix()
             print(man_path_posix)
     else:
-        print("No man_pages array in {}".format(conf_path), file=sys.stderr)
+        print(f"No man_pages array in {conf_path}", file=sys.stderr)
         sys.exit(3)

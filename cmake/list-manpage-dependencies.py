@@ -11,7 +11,7 @@ import sys
 if __name__ == "__main__":
 
     if len(sys.argv) != 2:
-        sys.exit("Usage: %s sphinx-srcdir" % (sys.argv[0]))
+        sys.exit(f"Usage: {sys.argv[0]} sphinx-srcdir")
 
     conf_dir = os.path.abspath(sys.argv[1])
     conf_path = os.path.join(conf_dir, 'conf.py')
@@ -21,7 +21,7 @@ if __name__ == "__main__":
 
     if hasattr(conf, 'man_pages'):
         for man in conf.man_pages:
-            man_path = os.path.join(sys.argv[1], "{}{}".format(man[0], '.rst'))
+            man_path = os.path.join(sys.argv[1], f"{man[0]}.rst")
             man_path_posix = pathlib.PureWindowsPath(man_path).as_posix()
             print(man_path_posix)
 
